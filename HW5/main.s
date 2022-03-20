@@ -21,53 +21,69 @@ initialize:
 	@ Function supports interworking.
 	@ args = 0, pretend = 0, frame = 0
 	@ frame_needed = 0, uses_anonymous_args = 0
-	push	{r4, r5, r6, lr}
-	mov	r2, #4608
+	push	{r4, r5, r6, r7, r8, lr}
 	mov	r4, #0
+	mov	r6, #3
 	mov	r5, #67108864
-	mov	r1, #7936
-	ldr	r3, .L4
-	ldr	r0, .L4+4
-	ldrh	ip, [r3, #48]
-	ldr	r3, .L4+8
-	strh	ip, [r0]	@ movhi
-	strh	r4, [r3]	@ movhi
-	ldr	r6, .L4+12
-	strh	r2, [r5]	@ movhi
-	mov	r3, #256
-	strh	r1, [r5, #10]	@ movhi
-	mov	r2, #83886080
-	mov	r0, #3
+	mov	r3, #4608
+	mov	r2, #7936
+	ldr	r1, .L4
+	str	r4, [r1]
+	ldr	r1, .L4+4
+	ldr	ip, .L4+8
+	str	r6, [r1]
+	ldr	r0, .L4+12
 	ldr	r1, .L4+16
+	ldr	lr, .L4+20
+	str	r4, [ip]
+	str	r4, [r0]
+	ldr	ip, .L4+24
+	ldrh	r0, [r1, #48]
+	ldr	r1, .L4+28
+	str	r4, [lr]
+	strh	r4, [ip]	@ movhi
+	strh	r0, [r1]	@ movhi
+	ldr	r7, .L4+32
+	strh	r3, [r5]	@ movhi
+	mov	r0, r6
+	strh	r2, [r5, #10]	@ movhi
+	mov	r3, #256
+	mov	r2, #83886080
+	ldr	r1, .L4+36
 	mov	lr, pc
-	bx	r6
+	bx	r7
+	mov	r0, r6
 	mov	r2, #100663296
-	mov	r0, #3
-	ldr	r3, .L4+20
-	ldr	r1, .L4+24
+	ldr	r3, .L4+40
+	ldr	r1, .L4+44
 	mov	lr, pc
-	bx	r6
+	bx	r7
+	mov	r0, r6
 	mov	r3, #1024
-	mov	r0, #3
-	ldr	r2, .L4+28
-	ldr	r1, .L4+32
+	ldr	r2, .L4+48
+	ldr	r1, .L4+52
 	mov	lr, pc
-	bx	r6
+	bx	r7
 	strh	r4, [r5, #22]	@ movhi
-	ldr	r3, .L4+36
+	ldr	r3, .L4+56
 	strh	r4, [r5, #20]	@ movhi
 	mov	lr, pc
 	bx	r3
-	ldr	r3, .L4+40
+	ldr	r3, .L4+60
 	str	r4, [r3]
-	pop	{r4, r5, r6, lr}
+	pop	{r4, r5, r6, r7, r8, lr}
 	bx	lr
 .L5:
 	.align	2
 .L4:
+	.word	nextLevel
+	.word	life
+	.word	score
+	.word	.LANCHOR0
 	.word	67109120
-	.word	buttons
+	.word	rescued
 	.word	oldButtons
+	.word	buttons
 	.word	DMANow
 	.word	titlePal
 	.word	4304

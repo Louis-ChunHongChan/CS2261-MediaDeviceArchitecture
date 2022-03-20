@@ -82,6 +82,12 @@ int main() {
 
 // Sets up GBA.
 void initialize() {
+    nextLevel = 0;
+    life = 3;
+    rescued = 0;
+    score = 0;
+    initialized2 = 0;
+
     buttons = BUTTONS;
     oldButtons = 0;
 

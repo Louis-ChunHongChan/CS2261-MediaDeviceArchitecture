@@ -1390,9 +1390,11 @@ void initScore();
 void initScore2();
 void animateKong();
 void animateMario();
+void animateMario2();
 void animatePauline();
 void animateBarrel();
 void updateMario();
+void updateMario2();
 void updateKong();
 void updatePauline();
 void updateBarrel();
@@ -1402,6 +1404,7 @@ void drawMario();
 void drawKong();
 void drawPauline();
 void drawBarrel();
+void drawBarrel2();
 void drawHammer();
 void drawHeart();
 void drawScore();
@@ -1551,6 +1554,12 @@ int main() {
 
 
 void initialize() {
+    nextLevel = 0;
+    life = 3;
+    rescued = 0;
+    score = 0;
+    initialized2 = 0;
+
     buttons = (*(volatile unsigned short *)0x04000130);
     oldButtons = 0;
 

@@ -565,22 +565,6 @@ gameBg2Map:
 	.short	0
 	.short	0
 	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
 	.short	1
 	.short	2
 	.short	3
@@ -661,238 +645,54 @@ gameBg2Map:
 	.short	0
 	.short	0
 	.short	0
+	.short	0
+	.short	0
+	.short	0
+	.short	0
+	.short	0
+	.short	0
+	.short	0
+	.short	0
+	.short	0
+	.short	0
+	.short	0
+	.short	0
+	.short	0
+	.short	0
+	.short	0
+	.short	0
 	.short	13
 	.short	13
 	.short	13
 	.short	13
 	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	0
+	.short	0
+	.short	0
+	.short	0
+	.short	0
+	.short	0
+	.short	0
+	.short	0
 	.short	14
 	.short	15
-	.short	1038
-	.short	13
-	.short	13
-	.short	13
-	.short	13
-	.short	13
-	.short	13
-	.short	13
-	.short	13
-	.short	13
-	.short	13
-	.short	13
-	.short	13
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	13
-	.short	13
-	.short	13
-	.short	13
-	.short	13
-	.short	13
-	.short	13
-	.short	13
-	.short	13
-	.short	14
-	.short	15
-	.short	1038
-	.short	13
-	.short	13
-	.short	13
-	.short	13
-	.short	13
-	.short	13
-	.short	13
-	.short	13
-	.short	13
-	.short	13
-	.short	13
-	.short	13
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	13
-	.short	13
-	.short	13
-	.short	13
-	.short	13
-	.short	13
-	.short	13
-	.short	13
-	.short	13
-	.short	14
-	.short	15
-	.short	1038
-	.short	13
-	.short	13
-	.short	13
-	.short	13
-	.short	13
-	.short	13
-	.short	13
-	.short	13
-	.short	13
-	.short	13
-	.short	13
-	.short	13
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	13
-	.short	13
-	.short	13
-	.short	13
-	.short	13
-	.short	13
-	.short	13
-	.short	13
-	.short	13
-	.short	14
-	.short	15
-	.short	1038
-	.short	13
-	.short	13
-	.short	13
-	.short	13
-	.short	13
-	.short	13
-	.short	13
-	.short	13
-	.short	13
-	.short	13
-	.short	13
-	.short	13
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	13
-	.short	13
-	.short	13
-	.short	13
-	.short	13
-	.short	13
-	.short	13
-	.short	13
-	.short	13
-	.short	14
-	.short	15
-	.short	1038
-	.short	13
-	.short	13
-	.short	13
-	.short	13
-	.short	13
-	.short	13
-	.short	13
-	.short	13
-	.short	13
-	.short	13
-	.short	13
-	.short	13
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	13
-	.short	13
-	.short	13
-	.short	13
-	.short	13
-	.short	13
-	.short	13
-	.short	13
-	.short	13
-	.short	14
-	.short	15
-	.short	1038
-	.short	13
-	.short	13
-	.short	13
-	.short	13
-	.short	13
-	.short	13
-	.short	13
-	.short	13
-	.short	13
-	.short	13
-	.short	13
-	.short	13
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	13
-	.short	13
-	.short	13
-	.short	13
-	.short	13
-	.short	13
-	.short	13
-	.short	13
-	.short	13
-	.short	14
-	.short	13
-	.short	1038
-	.short	13
-	.short	13
-	.short	13
-	.short	13
-	.short	13
-	.short	13
-	.short	13
-	.short	13
-	.short	13
-	.short	13
-	.short	13
-	.short	13
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	13
-	.short	13
-	.short	13
-	.short	13
-	.short	13
-	.short	13
-	.short	13
-	.short	13
-	.short	13
-	.short	14
 	.short	16
-	.short	1038
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
 	.short	13
 	.short	13
 	.short	13
@@ -913,146 +713,18 @@ gameBg2Map:
 	.short	0
 	.short	0
 	.short	0
-	.short	13
-	.short	13
-	.short	13
-	.short	13
-	.short	13
-	.short	13
-	.short	13
-	.short	13
-	.short	13
 	.short	14
 	.short	13
-	.short	1038
-	.short	13
-	.short	13
-	.short	13
-	.short	13
-	.short	13
-	.short	13
-	.short	13
-	.short	13
-	.short	13
-	.short	13
-	.short	13
-	.short	13
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	13
-	.short	13
-	.short	13
-	.short	13
-	.short	13
-	.short	13
-	.short	13
-	.short	13
-	.short	13
-	.short	14
-	.short	2063
-	.short	1038
-	.short	13
-	.short	13
-	.short	13
-	.short	13
-	.short	13
-	.short	13
-	.short	13
-	.short	13
-	.short	13
-	.short	13
-	.short	13
-	.short	13
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	13
-	.short	13
-	.short	13
-	.short	13
-	.short	13
-	.short	13
-	.short	13
-	.short	13
-	.short	13
-	.short	14
-	.short	2063
-	.short	1038
-	.short	13
-	.short	13
-	.short	13
-	.short	13
-	.short	13
-	.short	13
-	.short	13
-	.short	13
-	.short	13
-	.short	13
-	.short	13
-	.short	13
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	13
-	.short	13
-	.short	13
-	.short	13
-	.short	13
-	.short	13
-	.short	13
-	.short	13
-	.short	13
-	.short	14
-	.short	2063
-	.short	1038
-	.short	13
-	.short	13
-	.short	13
-	.short	13
-	.short	13
-	.short	13
-	.short	13
-	.short	13
-	.short	13
-	.short	13
-	.short	13
-	.short	13
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	13
-	.short	13
-	.short	13
-	.short	13
-	.short	13
-	.short	13
-	.short	13
-	.short	13
-	.short	13
-	.short	14
 	.short	16
-	.short	1038
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
 	.short	13
 	.short	13
 	.short	13
@@ -1073,18 +745,80 @@ gameBg2Map:
 	.short	0
 	.short	0
 	.short	0
-	.short	13
-	.short	13
-	.short	13
-	.short	13
-	.short	13
-	.short	13
-	.short	13
-	.short	13
-	.short	13
 	.short	14
-	.short	15
+	.short	17
+	.short	16
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	0
+	.short	0
+	.short	0
+	.short	0
+	.short	0
+	.short	0
+	.short	0
+	.short	0
+	.short	14
+	.short	13
+	.short	16
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	0
+	.short	0
+	.short	0
+	.short	0
+	.short	0
+	.short	0
+	.short	0
+	.short	0
+	.short	14
+	.short	18
 	.short	1038
+	.short	0
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
 	.short	13
 	.short	13
 	.short	13
@@ -1097,6 +831,8 @@ gameBg2Map:
 	.short	13
 	.short	13
 	.short	13
+	.short	13
+	.short	13
 	.short	0
 	.short	0
 	.short	0
@@ -1104,6 +840,10 @@ gameBg2Map:
 	.short	0
 	.short	0
 	.short	0
+	.short	0
+	.short	14
+	.short	0
+	.short	1038
 	.short	0
 	.short	13
 	.short	13
@@ -1111,102 +851,25 @@ gameBg2Map:
 	.short	13
 	.short	13
 	.short	13
-	.short	0
-	.short	0
-	.short	0
-	.short	17
-	.short	18
-	.short	1041
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
 	.short	13
 	.short	13
 	.short	13
 	.short	13
 	.short	13
 	.short	13
-	.short	0
-	.short	0
-	.short	0
-	.short	17
-	.short	18
-	.short	1041
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
 	.short	13
 	.short	13
 	.short	13
 	.short	13
 	.short	13
 	.short	13
-	.short	0
-	.short	0
-	.short	0
-	.short	17
-	.short	18
-	.short	1041
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
 	.short	13
 	.short	13
-	.short	13
-	.short	13
-	.short	13
-	.short	13
+	.short	19
+	.short	19
+	.short	19
+	.short	19
+	.short	19
 	.short	19
 	.short	19
 	.short	19
@@ -1214,25 +877,362 @@ gameBg2Map:
 	.short	19
 	.short	1044
 	.short	19
-	.short	19
-	.short	19
-	.short	19
-	.short	19
-	.short	19
-	.short	19
-	.short	19
-	.short	19
-	.short	19
-	.short	19
-	.short	19
-	.short	19
-	.short	19
-	.short	19
-	.short	19
-	.short	19
-	.short	19
-	.short	19
-	.short	19
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
+	.short	13
 	.short	13
 	.short	13
 	.short	13
@@ -1323,36 +1323,6 @@ gameBg2Tiles:
 	.short	0
 	.short	0
 	.short	0
-	.short	4368
-	.short	4096
-	.short	13105
-	.short	12544
-	.short	13107
-	.short	13072
-	.short	13056
-	.short	13072
-	.short	12291
-	.short	13072
-	.short	51
-	.short	13072
-	.short	819
-	.short	0
-	.short	0
-	.short	1
-	.short	0
-	.short	275
-	.short	0
-	.short	4915
-	.short	0
-	.short	13104
-	.short	1
-	.short	13107
-	.short	1
-	.short	13107
-	.short	1
-	.short	13104
-	.short	1
-	.short	0
 	.short	0
 	.short	0
 	.short	4369
@@ -1366,8 +1336,8 @@ gameBg2Tiles:
 	.short	13056
 	.short	13105
 	.short	12291
-	.short	13105
-	.short	51
+	.short	0
+	.short	0
 	.short	0
 	.short	0
 	.short	0
@@ -1377,109 +1347,109 @@ gameBg2Tiles:
 	.short	307
 	.short	0
 	.short	4915
-	.short	0
-	.short	4915
-	.short	0
-	.short	4915
-	.short	0
-	.short	4915
-	.short	0
-	.short	12544
-	.short	13107
 	.short	4096
-	.short	13105
-	.short	0
-	.short	4368
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	4368
+	.short	4915
 	.short	4096
+	.short	4915
+	.short	4096
+	.short	0
+	.short	0
+	.short	0
+	.short	0
+	.short	4096
+	.short	273
+	.short	12560
+	.short	4915
 	.short	13105
-	.short	12544
 	.short	13107
-	.short	4915
-	.short	0
-	.short	275
-	.short	0
-	.short	1
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	1
-	.short	0
-	.short	275
-	.short	0
-	.short	4915
-	.short	0
-	.short	13072
-	.short	13107
-	.short	4352
-	.short	13107
-	.short	0
-	.short	4369
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	4369
-	.short	4352
-	.short	13107
-	.short	13072
-	.short	13107
-	.short	307
-	.short	0
-	.short	17
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	17
-	.short	0
-	.short	307
-	.short	0
-	.short	13072
-	.short	12291
-	.short	13072
 	.short	51
-	.short	13072
+	.short	12339
 	.short	819
-	.short	13072
-	.short	13059
-	.short	12544
-	.short	13107
-	.short	4096
-	.short	13105
-	.short	0
-	.short	4368
-	.short	0
-	.short	0
-	.short	13107
-	.short	1
-	.short	13107
-	.short	1
 	.short	13104
-	.short	1
+	.short	13107
 	.short	13056
+	.short	0
+	.short	0
+	.short	0
+	.short	0
+	.short	0
+	.short	0
 	.short	1
+	.short	0
+	.short	19
+	.short	0
+	.short	307
+	.short	0
+	.short	307
+	.short	0
+	.short	307
+	.short	0
+	.short	13105
+	.short	51
+	.short	13072
+	.short	13107
+	.short	4352
+	.short	13107
+	.short	0
+	.short	4369
+	.short	0
+	.short	0
+	.short	0
+	.short	0
+	.short	0
+	.short	4369
+	.short	4352
+	.short	13107
 	.short	4915
+	.short	4096
+	.short	307
 	.short	0
-	.short	275
+	.short	17
+	.short	0
+	.short	0
+	.short	0
+	.short	0
+	.short	0
+	.short	0
+	.short	0
+	.short	0
+	.short	0
+	.short	17
+	.short	0
+	.short	13107
+	.short	12291
+	.short	13105
+	.short	13107
+	.short	12560
+	.short	4915
+	.short	4096
+	.short	273
+	.short	0
+	.short	0
+	.short	0
+	.short	0
+	.short	4096
+	.short	273
+	.short	12560
+	.short	4915
+	.short	307
+	.short	0
+	.short	19
 	.short	0
 	.short	1
 	.short	0
 	.short	0
 	.short	0
+	.short	0
+	.short	0
+	.short	0
+	.short	0
+	.short	0
+	.short	0
+	.short	1
+	.short	0
+	.short	13072
+	.short	13107
 	.short	13105
 	.short	13056
 	.short	13105
@@ -1494,24 +1464,54 @@ gameBg2Tiles:
 	.short	13107
 	.short	0
 	.short	4369
-	.short	0
-	.short	0
-	.short	4915
+	.short	307
 	.short	0
 	.short	4915
-	.short	0
+	.short	4096
 	.short	4915
-	.short	0
+	.short	4096
+	.short	4915
+	.short	4096
 	.short	4912
-	.short	0
+	.short	4096
 	.short	307
 	.short	0
 	.short	17
 	.short	0
 	.short	0
 	.short	0
+	.short	13105
+	.short	13107
+	.short	819
+	.short	13104
+	.short	13107
+	.short	13056
+	.short	13107
+	.short	12291
+	.short	819
+	.short	51
+	.short	13105
+	.short	13107
+	.short	12560
+	.short	4915
+	.short	4096
+	.short	273
+	.short	19
+	.short	0
+	.short	307
+	.short	0
+	.short	307
+	.short	0
+	.short	307
+	.short	0
+	.short	307
+	.short	0
+	.short	19
+	.short	0
+	.short	1
 	.short	0
 	.short	0
+	.short	0
 	.short	17476
 	.short	17476
 	.short	17476
@@ -1528,22 +1528,22 @@ gameBg2Tiles:
 	.short	17476
 	.short	17476
 	.short	17476
-	.short	17476
-	.short	9284
-	.short	17476
-	.short	9284
-	.short	17476
-	.short	9284
-	.short	17476
-	.short	9284
-	.short	17476
-	.short	9284
-	.short	17476
-	.short	9284
-	.short	17476
-	.short	9284
-	.short	17476
-	.short	9284
+	.short	0
+	.short	8192
+	.short	0
+	.short	8192
+	.short	0
+	.short	8192
+	.short	0
+	.short	8192
+	.short	0
+	.short	8192
+	.short	0
+	.short	8192
+	.short	0
+	.short	8192
+	.short	0
+	.short	8192
 	.short	17476
 	.short	17476
 	.short	17476
@@ -1560,6 +1560,22 @@ gameBg2Tiles:
 	.short	17476
 	.short	8738
 	.short	8738
+	.short	17474
+	.short	17476
+	.short	17474
+	.short	17476
+	.short	17474
+	.short	17476
+	.short	17474
+	.short	17476
+	.short	17474
+	.short	17476
+	.short	17474
+	.short	17476
+	.short	17474
+	.short	17476
+	.short	17474
+	.short	17476
 	.short	8738
 	.short	8738
 	.short	17476
@@ -1576,24 +1592,8 @@ gameBg2Tiles:
 	.short	17476
 	.short	8738
 	.short	8738
-	.short	0
-	.short	8192
-	.short	0
-	.short	8192
-	.short	0
-	.short	8192
-	.short	0
-	.short	8192
-	.short	0
-	.short	8192
-	.short	0
-	.short	8192
-	.short	0
-	.short	8192
-	.short	0
-	.short	8192
-	.short	0
-	.short	0
+	.short	8738
+	.short	8738
 	.short	0
 	.short	0
 	.short	0
@@ -1610,34 +1610,34 @@ gameBg2Tiles:
 	.short	8738
 	.short	0
 	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
-	.short	0
+	.short	17476
+	.short	17476
+	.short	17476
+	.short	17476
+	.short	17476
+	.short	17476
+	.short	17476
+	.short	17476
+	.short	17476
+	.short	17476
+	.short	17476
+	.short	17476
 	.short	17476
 	.short	17476
 	.short	0
 	.short	8192
-	.short	0
-	.short	8192
-	.short	0
-	.short	8192
-	.short	0
-	.short	8192
-	.short	0
-	.short	8192
-	.short	0
-	.short	8192
-	.short	0
-	.short	8192
+	.short	17476
+	.short	17476
+	.short	17476
+	.short	17476
+	.short	17476
+	.short	17476
+	.short	17476
+	.short	17476
+	.short	17476
+	.short	17476
+	.short	17476
+	.short	17476
 	.short	17476
 	.short	17476
 	.ident	"GCC: (devkitARM release 53) 9.1.0"
