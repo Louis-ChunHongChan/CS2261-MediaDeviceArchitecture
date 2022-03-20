@@ -1071,6 +1071,7 @@ int frame;
 int score;
 int jumpFrame;
 int downFrame;
+int hammerFrame;
 int nextLevel;
 
 unsigned char * collisionMap = (unsigned char*) collisionmapBitmap;
@@ -1105,6 +1106,7 @@ void initGame() {
     score = 0;
     jumpFrame = 0;
     downFrame = 0;
+    hammerFrame = 0;
     nextLevel = 0;
 
     (*(volatile unsigned short *)0x04000016) = vOff;
@@ -1133,6 +1135,7 @@ void initGame() {
 }
 
 void initGame2() {
+    gravity = 10;
     jumping = 0;
     down = 0;
     climbing = 0;
@@ -1140,6 +1143,10 @@ void initGame2() {
     frame = 0;
     jumpFrame = 0;
     downFrame = 0;
+    hammerFrame = 0;
+
+
+    hideSprites();
 
     initMario2();
     initKong2();
@@ -1147,10 +1154,7 @@ void initGame2() {
     initBarrel2();
     initHammer2();
     initHeart2();
-
-
-
-
+    initScore2();
 
     buttons = (*(volatile unsigned short *)0x04000130);
 
@@ -1179,7 +1183,7 @@ void initMario2() {
     mario.cdel = 1;
     mario.rdel = 1;
     mario.row = 80;
-    mario.col = 240 / 2 - mario.width * 3;
+    mario.col = 85;
     mario.aniCounter = 0;
     mario.curFrame = 0;
     mario.numFrames = 2;
@@ -1206,7 +1210,7 @@ void initKong2() {
     kong.cdel = 0;
     kong.rdel = 0;
     kong.row = 65;
-    kong.col = 240 / 2 - kong.height * 3 - 15;
+    kong.col = 240 / 2 - kong.height * 3;
     kong.aniCounter = 0;
     kong.curFrame = 0;
     kong.numFrames = 3;
@@ -1244,8 +1248,8 @@ void initBarrel() {
     for(int i = 0; i < 5; i++){
         barrel[i].width = 16;
         barrel[i].height = 16;
-        barrel[i].cdel = 1;
-        barrel[i].rdel = 1;
+        barrel[i].cdel = 2;
+        barrel[i].rdel = 2;
         barrel[i].row = 188;
         barrel[i].col = 240 / 2 - barrel[i].width * 3;
         barrel[i].aniCounter = 0;
@@ -1262,21 +1266,16 @@ void initBarrel2() {
     for(int i = 0; i < 5; i++){
         barrel[i].width = 16;
         barrel[i].height = 16;
-        barrel[i].cdel = 1;
-        barrel[i].rdel = 1;
+        barrel[i].cdel = 2;
+        barrel[i].rdel = 2;
         barrel[i].row = 83;
-        barrel[i].col = 240 / 2 - kong.height * 3 - 10;
+        barrel[i].col = 240 / 2 - kong.height * 3 + 3;
         barrel[i].aniCounter = 0;
         barrel[i].curFrame = 0;
         barrel[i].numFrames = 2;
         barrel[i].aniState = 1;
         barrel[i].dropped = 0;
-        if (i == 0) {
-            barrel[i].active = 1;
-        }
-        else {
-            barrel[i].active = 0;
-        }
+        barrel[i].active = 0;
         barrel[i].jumpedOver = 0;
     }
 }
@@ -1343,6 +1342,18 @@ void initScore() {
     }
 }
 
+void initScore2() {
+    int shift = 0;
+    for (int i = 0; i < 2; i++) {
+        scoreUI[i].width = 8;
+        scoreUI[i].height = 8;
+        scoreUI[i].row = 50;
+        scoreUI[i].col = 240/2 + shift;
+        scoreUI[i].active = 1;
+        shift += 8;
+    }
+}
+
 void updateGame() {
     frame++;
 
@@ -1353,7 +1364,7 @@ void updateGame() {
         }
     }
 
-    if (!climbing && !jumping) {
+    if (!climbing) {
         if (collisionCheck(collisionMap, 256, mario.col, mario.row, mario.width, mario.height, 0, gravity)) {
             mario.row += gravity;
         }
@@ -1371,15 +1382,16 @@ void updateGame() {
         }
     }
 
-    if (frame - downFrame == 50) {
+    if (frame - downFrame == 70) {
         if (kong.collided) {
             kong.collided = 0;
         }
     }
 
     if (powerUp) {
-        if (frame % 300 == 0) {
+        if (frame - hammerFrame == 150) {
             powerUp = 0;
+            mario.aniState = LEFT;
         }
     }
 
@@ -1405,7 +1417,7 @@ void updateGame2() {
         }
     }
 
-    if (!climbing && !jumping) {
+    if (!climbing) {
         if (collisionCheck(collisionMap2, 256, mario.col, mario.row, mario.width, mario.height, 0, gravity)) {
             mario.row += gravity;
         }
@@ -1423,15 +1435,16 @@ void updateGame2() {
         }
     }
 
-    if (frame - downFrame == 50) {
+    if (frame - downFrame == 70) {
         if (kong.collided) {
             kong.collided = 0;
         }
     }
 
     if (powerUp) {
-        if (frame % 300 == 0) {
+        if (frame - hammerFrame == 150) {
             powerUp = 0;
+            mario.aniState = LEFT;
         }
     }
 
@@ -1449,7 +1462,7 @@ void updateGame2() {
 
 void updateMario() {
 
-    if (!jumping && life > 0 && !down && collision(mario.col, mario.row, mario.width, mario.height, pauline.col, pauline.row, pauline.width, pauline.height)) {
+    if (life > 0 && collision(mario.col, mario.row, mario.width, mario.height*2, pauline.col, pauline.row, pauline.width, pauline.height)) {
         score += 5;
         nextLevel = 1;
     }
@@ -1457,6 +1470,7 @@ void updateMario() {
 
     if (collision(mario.col, mario.row, mario.width, mario.height, hammer.col, hammer.row, hammer.width, hammer.height)) {
         powerUp = 1;
+        hammerFrame = frame;
         hammer.col = 256;
     }
 
@@ -1472,13 +1486,12 @@ void updateMario() {
     for (int i = 0; i < 5; i++) {
         if (!powerUp) {
 
-            if (!barrel[i].jumpedOver && collision(mario.col, mario.row, mario.width/2, mario.height/2, barrel[i].col, barrel[i].row, barrel[i].width/2, barrel[i].height/2)) {
+            if (collision(mario.col, mario.row, mario.width/2, mario.height/2, barrel[i].col, barrel[i].row, barrel[i].width/2, barrel[i].height/2)) {
                 life--;
                 down = 1;
                 downFrame = frame;
                 barrel[i].active = 0;
             }
-
 
 
             if (jumping && !down && !climbing && !barrel[i].jumpedOver) {
@@ -1489,7 +1502,7 @@ void updateMario() {
                     }
                 }
                 else if (mario.aniState == RIGHTJUMP) {
-                    if (mario.row < barrel[i].row && mario.col + mario.width - 1 > barrel[i].col + barrel[i].width - 1) {
+                    if (mario.row < barrel[i].row && mario.col <= barrel[i].col) {
                         score += 1;
                         barrel[i].jumpedOver = 1;
                     }
@@ -1562,18 +1575,19 @@ void updateMario() {
 
 void updateMario2() {
 
-    if (!down && collision(mario.col, mario.row, mario.width, mario.height, pauline.col, pauline.row, pauline.width, pauline.height)) {
+    if (!down && collision(mario.col, mario.row, mario.width, mario.height*2, pauline.col, pauline.row, pauline.width, pauline.height)) {
         rescued = 1;
     }
 
 
     if (collision(mario.col, mario.row, mario.width, mario.height, hammer.col, hammer.row, hammer.width, hammer.height)) {
         powerUp = 1;
+        hammerFrame = frame;
         hammer.col = 256;
     }
 
 
-    if (!kong.collided && collision(mario.col, mario.row, mario.width, mario.height, kong.col, kong.row, kong.width, kong.height)) {
+    if (!kong.collided && collision(mario.col, mario.row, mario.width, mario.height, kong.col, kong.row, kong.width/2, kong.height)) {
         life -= 1;
         down = 1;
         downFrame = frame;
@@ -1584,7 +1598,7 @@ void updateMario2() {
     for (int i = 0; i < 5; i++) {
         if (!powerUp) {
 
-            if (!barrel[i].jumpedOver && collision(mario.col, mario.row, mario.width/2, mario.height/2, barrel[i].col, barrel[i].row, barrel[i].width/2, barrel[i].height/2)) {
+            if (collision(mario.col, mario.row, mario.width/2, mario.height/2, barrel[i].col, barrel[i].row, barrel[i].width/2, barrel[i].height/2)) {
                 life--;
                 down = 1;
                 downFrame = frame;
@@ -1644,7 +1658,7 @@ void updateMario2() {
 
     if (!climbing && !jumping && !down) {
         if((~((*(volatile unsigned short *)0x04000130)) & ((1 << 5)))) {
-            if (collisionCheck(collisionMap2, 256, mario.col, mario.row, mario.width, mario.height, -mario.cdel, 0) && mario.col > 0) {
+            if (collisionCheck(collisionMap2, 256, mario.col, mario.row, mario.width, mario.height, -mario.cdel, 0)) {
                 mario.col -= mario.cdel;
 
 
@@ -1656,7 +1670,7 @@ void updateMario2() {
         }
 
         if((~((*(volatile unsigned short *)0x04000130)) & ((1 << 4)))) {
-            if (collisionCheck(collisionMap2, 256, mario.col, mario.row, mario.width, mario.height, mario.cdel, 0) && mario.col + mario.width - 1 < 256) {
+            if (collisionCheck(collisionMap2, 256, mario.col, mario.row, mario.width, mario.height, mario.cdel, 0)) {
                 mario.col += mario.cdel;
 
                 if (hOff+1 < 256 - 240 && (mario.col - hOff) > (240 / 2)) {
@@ -1730,31 +1744,27 @@ void updateBarrel2() {
     }
 
     for (int i = 0; i < 5; i++) {
+
         if (!barrel[i].active) {
             barrel[i].row = 83;
-            barrel[i].col = 240 / 2 - kong.height * 3 - 10;
+            barrel[i].col = 240 / 2 - kong.height * 3 + 45;
             barrel[i].dropped = 0;
             barrel[i].jumpedOver = 0;
         }
         else {
-
-            if (!barrel[i].dropped) {
-                if (collisionCheck(collisionMap2, 256, mario.col, mario.row, mario.width, mario.height, barrel[i].cdel, 0)) {
-                    barrel[i].col += barrel[i].cdel;
+            if (!collisionCheck(laddercollisionMap2, 256, barrel[i].col, barrel[i].row, barrel[i].width, barrel[i].height, 0, -barrel[i].rdel * 3)) {
+                barrel[i].row -= barrel[i].rdel;
+            }
+            else {
+                barrel[i].col += barrel[i].cdel;
+                if (barrel[i].col >= 90 && barrel[i].col <= 150 && barrel[i].row <= 132) {
+                    if (collisionCheck(collisionMap2, 256, barrel[i].col, barrel[i].row, barrel[i].width, barrel[i].height, 0, barrel[i].rdel)) {
+                        barrel[i].row += barrel[i].rdel;
+                    }
                 }
-            }
-            if (collisionCheck(collisionMap2, 256, mario.col, mario.row, mario.width, mario.height, 0, barrel[i].rdel)) {
-                barrel[i].dropped = 1;
-                barrel[i].row += barrel[i].rdel;
-            }
-
-            if (barrel[i].dropped) {
-                if (!collisionCheck(collisionMap2, 256, mario.col, mario.row, mario.width, mario.height, 0, barrel[i].rdel)) {
-                    barrel[i].dropped = 0;
+                if (barrel[i].col > 256) {
+                    barrel[i].active = 0;
                 }
-            }
-            if (!collisionCheck(collisionMap2, 256, mario.col, mario.row, mario.width, mario.height, barrel[i].cdel, 0)) {
-                barrel[i].active = 0;
             }
         }
     }
@@ -1775,7 +1785,6 @@ void animateMario() {
 
     mario.prevAniState = mario.aniState;
     mario.aniState = IDLE;
-    mario.numFrames = 2;
 
     if (powerUp) {
         if ((~((*(volatile unsigned short *)0x04000130)) & ((1 << 4)))) {
@@ -1935,7 +1944,9 @@ void animateBarrel() {
     for (int i = 0; i < 5; i++) {
         barrel[i].aniCounter++;
         if (barrel[i].aniCounter % 15 == 0) {
-            barrel[i].curFrame = (barrel[i].curFrame + 1) % barrel[i].numFrames;
+            if (barrel[i].active) {
+                barrel[i].curFrame = (barrel[i].curFrame + 1) % barrel[i].numFrames;
+            }
         }
     }
 }
@@ -2011,13 +2022,13 @@ void drawBarrel() {
 
 void drawBarrel2() {
     for (int i = 0; i < 5; i++) {
-        shadowOAM[20+i].attr0 = (barrel[i].row - vOff) | (0 << 14);
-        shadowOAM[20+i].attr1 = (barrel[i].col - hOff) | (1 << 14);
-        if (!collisionCheck(laddercollisionMap2, 256, barrel[i].col, barrel[i].row, barrel[i].width, barrel[i].height, 0, barrel[i].rdel)) {
-            shadowOAM[20+i].attr2 = ((barrel[i].curFrame * 2 + 16)*32 + (0)) | ((0) << 12);
+        shadowOAM[14+i].attr0 = (barrel[i].row - vOff) | (0 << 14);
+        shadowOAM[14+i].attr1 = (barrel[i].col - hOff) | (1 << 14);
+        if (!collisionCheck(laddercollisionMap2, 256, barrel[i].col, barrel[i].row, barrel[i].width, barrel[i].height, 0, -barrel[i].rdel)) {
+            shadowOAM[14+i].attr2 = ((barrel[i].curFrame * 2 + 16)*32 + (0)) | ((0) << 12);
         }
         else {
-            shadowOAM[20+i].attr2 = ((barrel[i].curFrame * 2 + 16)*32 + (barrel[i].aniState * 2)) | ((0) << 12);
+            shadowOAM[14+i].attr2 = ((barrel[i].curFrame * 2 + 16)*32 + (barrel[i].aniState * 2)) | ((0) << 12);
         }
     }
 }
