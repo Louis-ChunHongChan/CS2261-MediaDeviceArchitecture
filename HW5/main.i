@@ -1577,6 +1577,7 @@ void initialize() {
     goToStart();
 }
 
+
 void initialize2() {
     buttons = (*(volatile unsigned short *)0x04000130);
     oldButtons = 0;

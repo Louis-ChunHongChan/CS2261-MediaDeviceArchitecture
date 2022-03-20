@@ -1116,6 +1116,7 @@ void initGame() {
     DMANow(3, mariospritesheetPal, ((unsigned short *)0x5000200), 512 / 2);
  DMANow(3, mariospritesheetTiles, &((charblock *)0x6000000)[4], 32768 / 2);
 
+
     initMario();
     initKong();
     initPauline();
@@ -1133,6 +1134,7 @@ void initGame() {
     vOff = 96;
     hOff = 0;
 }
+
 
 void initGame2() {
     gravity = 10;
@@ -1183,7 +1185,7 @@ void initMario2() {
     mario.cdel = 1;
     mario.rdel = 1;
     mario.row = 80;
-    mario.col = 85;
+    mario.col = 88;
     mario.aniCounter = 0;
     mario.curFrame = 0;
     mario.numFrames = 2;
@@ -1250,8 +1252,8 @@ void initBarrel() {
         barrel[i].height = 16;
         barrel[i].cdel = 2;
         barrel[i].rdel = 2;
-        barrel[i].row = 188;
-        barrel[i].col = 240 / 2 - barrel[i].width * 3;
+
+
         barrel[i].aniCounter = 0;
         barrel[i].curFrame = 0;
         barrel[i].numFrames = 2;
@@ -1268,8 +1270,8 @@ void initBarrel2() {
         barrel[i].height = 16;
         barrel[i].cdel = 2;
         barrel[i].rdel = 2;
-        barrel[i].row = 83;
-        barrel[i].col = 240 / 2 - kong.height * 3 + 3;
+
+
         barrel[i].aniCounter = 0;
         barrel[i].curFrame = 0;
         barrel[i].numFrames = 2;
@@ -1357,6 +1359,7 @@ void initScore2() {
 void updateGame() {
     frame++;
 
+
     if (jumping) {
         if (frame - jumpFrame == 25) {
             jumping = 0;
@@ -1364,11 +1367,13 @@ void updateGame() {
         }
     }
 
+
     if (!climbing) {
         if (collisionCheck(collisionMap, 256, mario.col, mario.row, mario.width, mario.height, 0, gravity)) {
             mario.row += gravity;
         }
     }
+
 
     if (down) {
         if (mario.aniState == LEFT || mario.prevAniState == LEFT) {
@@ -1382,11 +1387,15 @@ void updateGame() {
         }
     }
 
+
+
+
     if (frame - downFrame == 70) {
         if (kong.collided) {
             kong.collided = 0;
         }
     }
+
 
     if (powerUp) {
         if (frame - hammerFrame == 150) {
@@ -1448,7 +1457,6 @@ void updateGame2() {
         }
     }
 
-
     if (collisionCheck(laddercollisionMap2, 256, mario.col, mario.row, mario.width, mario.height, 0, mario.rdel) || collisionCheck(laddercollisionMap2, 256, mario.col, mario.row, mario.width, mario.height, 0, -mario.rdel)) {
         climbing = 0;
     }
@@ -1475,14 +1483,6 @@ void updateMario() {
     }
 
 
-    if (!kong.collided && collision(mario.col, mario.row, mario.width, mario.height, kong.col, kong.row, kong.width, kong.height)) {
-        life -= 1;
-        down = 1;
-        downFrame = frame;
-        kong.collided = 1;
-    }
-
-
     for (int i = 0; i < 5; i++) {
         if (!powerUp) {
 
@@ -1497,7 +1497,7 @@ void updateMario() {
             if (jumping && !down && !climbing && !barrel[i].jumpedOver) {
                 if (mario.aniState == LEFTJUMP) {
                     if (mario.row < barrel[i].row && mario.col <= barrel[i].col) {
-                        score += 1;
+                        score += 3;
                         barrel[i].jumpedOver = 1;
                     }
                 }
@@ -1509,6 +1509,7 @@ void updateMario() {
                 }
             }
         }
+
         else {
             if (collision(mario.col, mario.row, mario.width, mario.height, barrel[i].col, barrel[i].row, barrel[i].width, barrel[i].height)) {
                 barrel[i].active = 0;
@@ -1516,6 +1517,7 @@ void updateMario() {
             }
         }
     }
+
 
     if (!powerUp && !down && !jumping) {
         if((~((*(volatile unsigned short *)0x04000130)) & ((1 << 6)))) {
@@ -1544,15 +1546,14 @@ void updateMario() {
 
     }
 
+
     if (!climbing && !jumping && !down) {
         if((~((*(volatile unsigned short *)0x04000130)) & ((1 << 5)))) {
             if (collisionCheck(collisionMap, 256, mario.col, mario.row, mario.width, mario.height, -mario.cdel, 0)
                 && mario.col > 0) {
                 mario.col -= mario.cdel;
 
-
                 if (hOff-1 >= 0 && (mario.col - hOff) <= (240 / 2)) {
-
                     hOff--;
                 }
             }
@@ -1587,12 +1588,13 @@ void updateMario2() {
     }
 
 
-    if (!kong.collided && collision(mario.col, mario.row, mario.width, mario.height, kong.col, kong.row, kong.width/2, kong.height)) {
+    if (!kong.collided && collision(mario.col, mario.row, mario.width, mario.height, kong.col, kong.row, kong.width-3, kong.height)) {
         life -= 1;
         down = 1;
         downFrame = frame;
         kong.collided = 1;
     }
+
 
 
     for (int i = 0; i < 5; i++) {
@@ -1609,12 +1611,12 @@ void updateMario2() {
             if (jumping && !down && !climbing && !barrel[i].jumpedOver) {
                 if (mario.aniState == LEFTJUMP) {
                     if (mario.row < barrel[i].row && mario.col <= barrel[i].col) {
-                        score += 1;
+                        score += 3;
                         barrel[i].jumpedOver = 1;
                     }
                 }
                 else if (mario.aniState == RIGHTJUMP) {
-                    if (mario.row < barrel[i].row && mario.col + mario.width - 1 > barrel[i].col + barrel[i].width - 1) {
+                    if (mario.row < barrel[i].row && mario.col <= barrel[i].col) {
                         score += 1;
                         barrel[i].jumpedOver = 1;
                     }
@@ -1702,6 +1704,7 @@ void updateBarrel() {
         }
     }
 
+
     for (int i = 0; i < 5; i++) {
         if (!barrel[i].active) {
             barrel[i].row = 188;
@@ -1710,6 +1713,7 @@ void updateBarrel() {
             barrel[i].jumpedOver = 0;
         }
         else {
+
             if (!collisionCheck(laddercollisionMap, 256, barrel[i].col, barrel[i].row, barrel[i].width, barrel[i].height, 0, barrel[i].rdel)) {
                 barrel[i].row += barrel[i].rdel;
                 barrel[i].dropped = 1;
@@ -1743,15 +1747,16 @@ void updateBarrel2() {
         }
     }
 
-    for (int i = 0; i < 5; i++) {
 
+    for (int i = 0; i < 5; i++) {
         if (!barrel[i].active) {
             barrel[i].row = 83;
-            barrel[i].col = 240 / 2 - kong.height * 3 + 45;
+            barrel[i].col = 240 / 2 - kong.height * 3 + 15;
             barrel[i].dropped = 0;
             barrel[i].jumpedOver = 0;
         }
         else {
+
             if (!collisionCheck(laddercollisionMap2, 256, barrel[i].col, barrel[i].row, barrel[i].width, barrel[i].height, 0, -barrel[i].rdel * 3)) {
                 barrel[i].row -= barrel[i].rdel;
             }
@@ -1856,6 +1861,7 @@ void animateMario2() {
     mario.aniState = IDLE;
     mario.numFrames = 2;
 
+
     if (powerUp) {
         if ((~((*(volatile unsigned short *)0x04000130)) & ((1 << 4)))) {
             mario.aniState = RIGHTHAMMER;
@@ -1921,7 +1927,6 @@ void animateMario2() {
 }
 
 void animateKong() {
-
 
     kong.aniCounter++;
 

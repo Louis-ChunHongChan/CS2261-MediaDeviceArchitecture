@@ -105,6 +105,7 @@ void initialize() {
     goToStart();
 }
 
+// Sets up GBA for level 2
 void initialize2() {
     buttons = BUTTONS;
     oldButtons = 0;

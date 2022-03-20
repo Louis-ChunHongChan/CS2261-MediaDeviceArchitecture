@@ -8,8 +8,8 @@
 #include "collisionmap2.h"
 #include "laddercollisionmap.h"
 #include "laddercollisionmap2.h"
-// #include "small_image.h"
 
+// variables
 int life;
 int rescued;
 int hOff;
@@ -69,6 +69,7 @@ void initGame() {
     DMANow(3, mariospritesheetPal, SPRITEPALETTE, mariospritesheetPalLen / 2);
 	DMANow(3, mariospritesheetTiles, &CHARBLOCK[4], mariospritesheetTilesLen / 2);
 
+    // initialize all the functions
     initMario();
     initKong();
     initPauline();
@@ -87,6 +88,7 @@ void initGame() {
     hOff = 0;
 }
 
+// initialization for level 2
 void initGame2() {
     gravity = 10;
     jumping = 0;
@@ -136,7 +138,7 @@ void initMario2() {
     mario.cdel = 1;
     mario.rdel = 1;
     mario.row = 80;
-    mario.col = 85;
+    mario.col = 88;
     mario.aniCounter = 0;
     mario.curFrame = 0;
     mario.numFrames = 2;
@@ -203,8 +205,8 @@ void initBarrel() {
         barrel[i].height = 16;
         barrel[i].cdel = 2;
         barrel[i].rdel = 2;
-        barrel[i].row = 188;
-        barrel[i].col = SCREENWIDTH / 2 - barrel[i].width * 3;
+        // barrel[i].row = 188;
+        // barrel[i].col = SCREENWIDTH / 2 - barrel[i].width * 3;
         barrel[i].aniCounter = 0;
         barrel[i].curFrame = 0;
         barrel[i].numFrames = 2;
@@ -221,8 +223,8 @@ void initBarrel2() {
         barrel[i].height = 16;
         barrel[i].cdel = 2;
         barrel[i].rdel = 2;
-        barrel[i].row = 83;
-        barrel[i].col = SCREENWIDTH / 2 - kong.height * 3 + 3;
+        // barrel[i].row = 83;
+        // barrel[i].col = SCREENWIDTH / 2 - kong.height * 3;
         barrel[i].aniCounter = 0;
         barrel[i].curFrame = 0;
         barrel[i].numFrames = 2;
@@ -310,6 +312,7 @@ void initScore2() {
 void updateGame() {
     frame++;
 
+    // to delay other inputs and gravity when mario is jumping by calculating difference between current frame and start jumping frames
     if (jumping) {
         if (frame - jumpFrame == 25) {
             jumping = 0;
@@ -317,12 +320,14 @@ void updateGame() {
         }
     }
 
+    // if not climbing, then apply gravity to mario
     if (!climbing) {
         if (collisionCheck(collisionMap, MAPWIDTH, mario.col, mario.row, mario.width, mario.height, 0, gravity)) {
             mario.row += gravity;
         }
     }
 
+    // prevent inputs when mario was knocked down by barrel or Donkey Kong and lock aniState
     if (down) {
         if (mario.aniState == LEFT || mario.prevAniState == LEFT) {
             mario.aniState = LEFTDOWN;
@@ -335,12 +340,16 @@ void updateGame() {
         }
     }
 
+    // a short time interval is setted to prevent the player keep colliding with Donkey Kong
+    // if kong.collided = 1, then collision between it and mario won't effect anything
+    // if kong.collided = 0, then collision has effect
     if (frame - downFrame == 70) {
         if (kong.collided) {
             kong.collided = 0;
         }
     }
 
+    // to deplete mario's hammer state after a certain time interval
     if (powerUp) {
         if (frame - hammerFrame == 150) {
             powerUp = 0;
@@ -348,7 +357,7 @@ void updateGame() {
         }
     }
 
-    // off ladder
+    // when mario is off ladder
     if (mario.row == 232 || collisionCheck(laddercollisionMap, MAPWIDTH, mario.col, mario.row, mario.width, mario.height, 0, -mario.rdel)) {
         climbing = 0;
     }
@@ -401,7 +410,6 @@ void updateGame2() {
         }
     }
 
-    // off ladder
     if (collisionCheck(laddercollisionMap2, MAPWIDTH, mario.col, mario.row, mario.width, mario.height, 0, mario.rdel) || collisionCheck(laddercollisionMap2, MAPWIDTH, mario.col, mario.row, mario.width, mario.height, 0, -mario.rdel)) {
         climbing = 0;
     }
@@ -427,14 +435,6 @@ void updateMario() {
         hammer.col = 256;
     }
 
-    // Donkey Kong collision
-    if (!kong.collided && collision(mario.col, mario.row, mario.width, mario.height, kong.col, kong.row, kong.width, kong.height)) {
-        life -= 1;
-        down = 1;
-        downFrame = frame;
-        kong.collided = 1;
-    }
-
     // Barrel collision
     for (int i = 0; i < BARRELCOUNT; i++) {
         if (!powerUp) {
@@ -450,7 +450,7 @@ void updateMario() {
             if (jumping && !down && !climbing && !barrel[i].jumpedOver) {
                 if (mario.aniState == LEFTJUMP) {
                     if (mario.row < barrel[i].row && mario.col <= barrel[i].col) {
-                        score += 1;
+                        score += 3;
                         barrel[i].jumpedOver = 1;
                     }
                 }
@@ -462,6 +462,7 @@ void updateMario() {
                 }
             }
         }
+        // mario destroys barrels with hammer
         else {
             if (collision(mario.col, mario.row, mario.width, mario.height, barrel[i].col, barrel[i].row, barrel[i].width, barrel[i].height)) {
                 barrel[i].active = 0;
@@ -470,6 +471,7 @@ void updateMario() {
         }
     }
 
+    // mario to climb ladders
     if (!powerUp && !down && !jumping) {
         if(BUTTON_HELD(BUTTON_UP)) {
             if (!collisionCheck(laddercollisionMap, MAPWIDTH, mario.col, mario.row, mario.width, mario.height, 0, -mario.rdel)) {
@@ -497,15 +499,14 @@ void updateMario() {
 
     }
     
+    // mario move left or right
     if (!climbing && !jumping && !down) {
         if(BUTTON_HELD(BUTTON_LEFT)) {
             if (collisionCheck(collisionMap, MAPWIDTH, mario.col, mario.row, mario.width, mario.height, -mario.cdel, 0)
                 && mario.col > 0) {
                 mario.col -= mario.cdel;
 
-                // Only move the screen if the character is in the proper spot AND the screen isn't already at the edge
                 if (hOff-1 >= 0 && (mario.col - hOff) <= (SCREENWIDTH / 2)) {
-                    // Update background offset if the above is true
                     hOff--;
                 }
             }
@@ -540,12 +541,13 @@ void updateMario2() {
     }
 
     // Donkey Kong collision
-    if (!kong.collided && collision(mario.col, mario.row, mario.width, mario.height, kong.col, kong.row, kong.width/2, kong.height)) {
+    if (!kong.collided && collision(mario.col, mario.row, mario.width, mario.height, kong.col, kong.row, kong.width-3, kong.height)) {
         life -= 1;
         down = 1;
         downFrame = frame;
         kong.collided = 1;
     }
+    
 
     // Barrel collision
     for (int i = 0; i < BARRELCOUNT; i++) {
@@ -562,12 +564,12 @@ void updateMario2() {
             if (jumping && !down && !climbing && !barrel[i].jumpedOver) {
                 if (mario.aniState == LEFTJUMP) {
                     if (mario.row < barrel[i].row && mario.col <= barrel[i].col) {
-                        score += 1;
+                        score += 3;
                         barrel[i].jumpedOver = 1;
                     }
                 }
                 else if (mario.aniState == RIGHTJUMP) {
-                    if (mario.row < barrel[i].row && mario.col + mario.width - 1 > barrel[i].col + barrel[i].width - 1) {
+                    if (mario.row < barrel[i].row && mario.col <= barrel[i].col) {
                         score += 1;
                         barrel[i].jumpedOver = 1;
                     }
@@ -655,6 +657,7 @@ void updateBarrel() {
         }
     }
 
+    // barrels animation
     for (int i = 0; i < BARRELCOUNT; i++) {
         if (!barrel[i].active) {
             barrel[i].row = 188;
@@ -663,6 +666,7 @@ void updateBarrel() {
             barrel[i].jumpedOver = 0;
         }
         else {
+            // barrels row down the ladder
             if (!collisionCheck(laddercollisionMap, MAPWIDTH, barrel[i].col, barrel[i].row, barrel[i].width, barrel[i].height, 0, barrel[i].rdel)) {
                 barrel[i].row += barrel[i].rdel;
                 barrel[i].dropped = 1;
@@ -696,14 +700,16 @@ void updateBarrel2() {
         }
     }
 
+    // barrels animation
     for (int i = 0; i < BARRELCOUNT; i++) {
         if (!barrel[i].active) {
             barrel[i].row = 83;
-            barrel[i].col = SCREENWIDTH / 2 - kong.height * 3 + 45;
+            barrel[i].col = SCREENWIDTH / 2 - kong.height * 3 + 15;
             barrel[i].dropped = 0;
             barrel[i].jumpedOver = 0;
         }
         else {
+            // barrels roll up the ladder
             if (!collisionCheck(laddercollisionMap2, MAPWIDTH, barrel[i].col, barrel[i].row, barrel[i].width, barrel[i].height, 0, -barrel[i].rdel * 3)) {
                 barrel[i].row -= barrel[i].rdel;
             }
@@ -808,6 +814,7 @@ void animateMario2() {
     mario.aniState = IDLE;
     mario.numFrames = 2;
 
+    // animation after got hammer
     if (powerUp) {
         if (BUTTON_HELD(BUTTON_RIGHT)) {
             mario.aniState = RIGHTHAMMER;
@@ -873,7 +880,6 @@ void animateMario2() {
 }
 
 void animateKong() {
-
     // Change the animation frame every 15 frames of gameplay
     kong.aniCounter++;
 
