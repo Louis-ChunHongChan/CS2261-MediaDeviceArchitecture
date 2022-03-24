@@ -496,7 +496,6 @@ void updateMario() {
                 }
             }
         }
-
     }
     
     // mario move left or right

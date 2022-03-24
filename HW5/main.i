@@ -1664,7 +1664,7 @@ void game() {
         goToLose();
     }
 
-    if (rescued || score == 99) {
+    if (rescued || score >= 99) {
         goToWin();
     }
 }

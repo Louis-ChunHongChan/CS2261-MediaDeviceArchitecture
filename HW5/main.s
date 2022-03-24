@@ -627,8 +627,8 @@ game:
 	bne	.L63
 	ldr	r3, .L73+32
 	ldr	r3, [r3]
-	cmp	r3, #99
-	beq	.L63
+	cmp	r3, #98
+	bgt	.L63
 	pop	{r4, lr}
 	bx	lr
 .L70:

@@ -192,7 +192,7 @@ void game() {
         goToLose();
     }
     // Easter egg: if score 99 win directly
-    if (rescued || score == 99) {
+    if (rescued || score >= 99) {
         goToWin();
     }
 }

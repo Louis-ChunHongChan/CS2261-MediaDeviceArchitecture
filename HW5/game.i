@@ -1543,7 +1543,6 @@ void updateMario() {
                 }
             }
         }
-
     }
 
 
