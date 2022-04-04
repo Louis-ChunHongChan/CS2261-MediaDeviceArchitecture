@@ -1,0 +1,7 @@
+{
+    "files.associations": {
+        "*.ejs": "html",
+        "sound.h": "c",
+        "mode0.h": "c"
+    }
+}
