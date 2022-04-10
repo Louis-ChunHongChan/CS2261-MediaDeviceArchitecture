@@ -1,0 +1,19 @@
+When game finished, voff-- for 5 seconds then show end screen.
+
+
+i found a couple issues with the player clipping through platforms and occasionally getting stuck, so make sure that when you’re checking for collisions you’re checking _every pixel_ between where the player is, and where they’re attempting to move to. also, if the player goes off the top of the map they disappear forever.
+
+for m03, make sure the rest of your core gameplay is implemented:
+- implement the time limit and the visual indicator for time remaining
+- add the “ground” level
+- start working on your XL background (i’m going to be covering this during recitation on Tuesday!)
+
+● Modify background tiles, sprite tiles, and/or palette (either) at runtime
+○ Using DMA to replace what is currently in memory with a new version
+does not meet this requirement, you must make actual modifications at
+runtime (meaning it can't all just come from Usenti exports).
+
+● At least two sounds that can play simultaneously, of which at least one must use
+digital sound
+○ At least one must be looping
+○ At least one must not loop
