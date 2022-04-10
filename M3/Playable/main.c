@@ -1,3 +1,10 @@
+/* Comment Block
+The game has win/lose condition, the core gameplay mechanics (walk, jump, ladder climbing, power-ups pick up, cheat), time limit and visual indicator for time remaining are finished.
+Modify background tiles at runtime and sounds still need to be added.
+No bugs so far.
+To play: Use left & right to move on a platform, up & down to move on a ladder, press B to jump over obstacles/enemies, collide with power-ups to pick them up. Try your best to reach the top of the level in the time limit to deliver the food to the customer who is waiting you at the top.
+*/
+
 #include <stdlib.h>
 #include <stdio.h>
 #include "mode0.h"

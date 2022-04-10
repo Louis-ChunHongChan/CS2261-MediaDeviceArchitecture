@@ -2,6 +2,13 @@
 # 1 "<built-in>"
 # 1 "<command-line>"
 # 1 "main.c"
+
+
+
+
+
+
+
 # 1 "/opt/devkitpro/devkitARM/arm-none-eabi/include/stdlib.h" 1 3
 # 10 "/opt/devkitpro/devkitARM/arm-none-eabi/include/stdlib.h" 3
 # 1 "/opt/devkitpro/devkitARM/arm-none-eabi/include/machine/ieeefp.h" 1 3
@@ -810,7 +817,7 @@ extern long double _strtold_r (struct _reent *, const char *restrict, char **res
 extern long double strtold (const char *restrict, char **restrict);
 # 336 "/opt/devkitpro/devkitARM/arm-none-eabi/include/stdlib.h" 3
 
-# 2 "main.c" 2
+# 9 "main.c" 2
 # 1 "/opt/devkitpro/devkitARM/arm-none-eabi/include/stdio.h" 1 3
 # 36 "/opt/devkitpro/devkitARM/arm-none-eabi/include/stdio.h" 3
 # 1 "/opt/devkitpro/devkitARM/lib/gcc/arm-none-eabi/9.1.0/include/stddef.h" 1 3 4
@@ -1221,7 +1228,7 @@ _putchar_unlocked(int _c)
 }
 # 797 "/opt/devkitpro/devkitARM/arm-none-eabi/include/stdio.h" 3
 
-# 3 "main.c" 2
+# 10 "main.c" 2
 # 1 "mode0.h" 1
 
 
@@ -1320,7 +1327,7 @@ void DMANow(int channel, volatile const void *src, volatile void *dst, unsigned 
 
 
 int collision(int colA, int rowA, int widthA, int heightA, int colB, int rowB, int widthB, int heightB);
-# 4 "main.c" 2
+# 11 "main.c" 2
 # 1 "game.h" 1
 
 
@@ -1429,7 +1436,7 @@ void interruptHandler(void);
 void enableTimerInterrupts(void);
 void setupInterrupts(void);
 int collisionCheck(unsigned char *collisionMap, int mapWidth, int col, int row, int width, int height, int colShift, int rowShift);
-# 5 "main.c" 2
+# 12 "main.c" 2
 # 1 "title.h" 1
 # 22 "title.h"
 extern const unsigned short titleTiles[2208];
@@ -1439,7 +1446,7 @@ extern const unsigned short titleMap[1024];
 
 
 extern const unsigned short titlePal[256];
-# 6 "main.c" 2
+# 13 "main.c" 2
 # 1 "pause.h" 1
 # 22 "pause.h"
 extern const unsigned short pauseTiles[832];
@@ -1449,7 +1456,7 @@ extern const unsigned short pauseMap[1024];
 
 
 extern const unsigned short pausePal[256];
-# 7 "main.c" 2
+# 14 "main.c" 2
 # 1 "gameBg.h" 1
 # 22 "gameBg.h"
 extern const unsigned short gameBgTiles[336];
@@ -1459,7 +1466,7 @@ extern const unsigned short gameBgMap[1024];
 
 
 extern const unsigned short gameBgPal[256];
-# 8 "main.c" 2
+# 15 "main.c" 2
 # 1 "lose.h" 1
 # 22 "lose.h"
 extern const unsigned short loseTiles[1232];
@@ -1469,7 +1476,7 @@ extern const unsigned short loseMap[1024];
 
 
 extern const unsigned short losePal[256];
-# 9 "main.c" 2
+# 16 "main.c" 2
 # 1 "win.h" 1
 # 22 "win.h"
 extern const unsigned short winTiles[4864];
@@ -1479,14 +1486,14 @@ extern const unsigned short winMap[1024];
 
 
 extern const unsigned short winPal[256];
-# 10 "main.c" 2
+# 17 "main.c" 2
 # 1 "spritesheet.h" 1
 # 21 "spritesheet.h"
 extern const unsigned short spritesheetTiles[16384];
 
 
 extern const unsigned short spritesheetPal[256];
-# 11 "main.c" 2
+# 18 "main.c" 2
 # 1 "instruction.h" 1
 # 22 "instruction.h"
 extern const unsigned short instructionTiles[4096];
@@ -1496,7 +1503,7 @@ extern const unsigned short instructionMap[1024];
 
 
 extern const unsigned short instructionPal[256];
-# 12 "main.c" 2
+# 19 "main.c" 2
 # 1 "underground.h" 1
 # 22 "underground.h"
 extern const unsigned short undergroundTiles[256];
@@ -1506,7 +1513,7 @@ extern const unsigned short undergroundMap[1024];
 
 
 extern const unsigned short undergroundPal[256];
-# 13 "main.c" 2
+# 20 "main.c" 2
 
 
 void initialize();
