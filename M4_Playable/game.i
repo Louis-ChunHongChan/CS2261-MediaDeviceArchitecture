@@ -1251,8 +1251,8 @@ void initGuy() {
     guy.curFrame = 0;
     guy.numFrames = 4;
     guy.aniState = RIGHT;
-    guy.hasKey1 = 0;
-    guy.hasKey2 = 0;
+    guy.hasKey1 = 1;
+    guy.hasKey2 = 1;
 }
 
 void initDoor() {
@@ -1642,6 +1642,15 @@ void updateDoor() {
         if (i == 0) {
             if (guy.hasKey1 && collision(guy.col, guy.row, guy.width, guy.height, door[i].col, door[i].row, door[i].width, door[i].height)) {
                 door[i].active = 0;
+
+
+
+                for (int i = 0; i < 3; i++) {
+                    ((screenblock *)0x6000000)[29].tilemap[((28) * (32) + (20 + i))] = ((screenblock *)0x6000000)[29].tilemap[((28) * (32) + (1))];
+                    for (int j = 0; j < 3; j++) {
+                        ((screenblock *)0x6000000)[29].tilemap[((28 + j) * (32) + (20 + i))] = ((screenblock *)0x6000000)[29].tilemap[((28) * (32) + (1))];
+                    }
+                }
             }
             else if (!guy.hasKey1 && collision(guy.col, guy.row, guy.width, guy.height, door[i].col, door[i].row, door[i].width, door[i].height)) {
                 guy.col -= 1;
@@ -1650,6 +1659,12 @@ void updateDoor() {
         else {
             if (guy.hasKey2 && collision(guy.col, guy.row, guy.width, guy.height, door[i].col, door[i].row, door[i].width, door[i].height)) {
                 door[i].active = 0;
+                for (int i = 0; i < 3; i++) {
+                    ((screenblock *)0x6000000)[28].tilemap[((28) * (32) + (5 + i))] = ((screenblock *)0x6000000)[29].tilemap[((28) * (32) + (1))];
+                    for (int j = 0; j < 3; j++) {
+                        ((screenblock *)0x6000000)[28].tilemap[((28 + j) * (32) + (5 + i))] = ((screenblock *)0x6000000)[29].tilemap[((28) * (32) + (1))];
+                    }
+                }
             }
             else if (!guy.hasKey2 && collision(guy.col, guy.row, guy.width, guy.height, door[i].col, door[i].row, door[i].width, door[i].height)) {
                 guy.col += 1;
@@ -1723,7 +1738,7 @@ void updateCustomer() {
 }
 
 void updateCrazy() {
-# 779 "game.c"
+# 794 "game.c"
     for (int i = 0; i < 9; i++) {
         if (frame - crazyFrame >= 50) {
             if (!crazy[i].active) {
@@ -1777,7 +1792,7 @@ void updateCrazy() {
             }
             crazy[i].col += crazy[i].cdel;
         }
-# 851 "game.c"
+# 866 "game.c"
     }
 
 
@@ -1800,7 +1815,7 @@ void animateGuy() {
 
     guy.prevAniState = guy.aniState;
     guy.aniState = IDLE;
-# 884 "game.c"
+# 899 "game.c"
     if(guy.aniCounter % 8 == 0) {
         guy.curFrame = (guy.curFrame + 1) % guy.numFrames;
     }
@@ -1880,7 +1895,7 @@ void animateGuy() {
     }
 
 }
-# 972 "game.c"
+# 987 "game.c"
 void animateCustomer() {
 
     customer.aniCounter++;
@@ -1971,7 +1986,7 @@ void drawGuy() {
         shadowOAM[0].attr1 = ((guy.col - guyhOff) & 0x1FF) | (1 << 14);
         shadowOAM[0].attr2 = ((guy.curFrame * 2)*32 + (15)) | ((0) << 12);
     }
-# 1079 "game.c"
+# 1094 "game.c"
 }
 
 void drawDoor() {

@@ -684,6 +684,15 @@ void updateDoor() {
         if (i == 0) {
             if (guy.hasKey1 && collision(guy.col, guy.row, guy.width, guy.height, door[i].col, door[i].row, door[i].width, door[i].height)) {
                 door[i].active = 0;
+                // col = 20, 21, 22
+                // col = 1
+                // row = 60
+                for (int i = 0; i < 3; i++) {
+                    SCREENBLOCK[29].tilemap[OFFSET(20 + i, 28, 32)] = SCREENBLOCK[29].tilemap[OFFSET(1, 28, 32)];
+                    for (int j = 0; j < 3; j++) {
+                        SCREENBLOCK[29].tilemap[OFFSET(20 + i, 28 + j, 32)] = SCREENBLOCK[29].tilemap[OFFSET(1, 28, 32)];
+                    }
+                }
             }
             else if (!guy.hasKey1 && collision(guy.col, guy.row, guy.width, guy.height, door[i].col, door[i].row, door[i].width, door[i].height)) {
                 guy.col -= 1;
@@ -692,6 +701,12 @@ void updateDoor() {
         else {
             if (guy.hasKey2 && collision(guy.col, guy.row, guy.width, guy.height, door[i].col, door[i].row, door[i].width, door[i].height)) {
                 door[i].active = 0;
+                for (int i = 0; i < 3; i++) {
+                    SCREENBLOCK[28].tilemap[OFFSET(5 + i, 28, 32)] = SCREENBLOCK[29].tilemap[OFFSET(1, 28, 32)];
+                    for (int j = 0; j < 3; j++) {
+                        SCREENBLOCK[28].tilemap[OFFSET(5 + i, 28 + j, 32)] = SCREENBLOCK[29].tilemap[OFFSET(1, 28, 32)];
+                    }
+                }
             }
             else if (!guy.hasKey2 && collision(guy.col, guy.row, guy.width, guy.height, door[i].col, door[i].row, door[i].width, door[i].height)) {
                 guy.col += 1;
