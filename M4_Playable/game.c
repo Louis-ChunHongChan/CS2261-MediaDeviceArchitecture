@@ -5,7 +5,6 @@
 #include "title.h"
 #include "sound.h"
 #include "collisionmap.h"
-#include "groundCollisionMap.h"
 #include "sheidGuard.h"
 
 #define CRAZYCOUNT 9
@@ -478,20 +477,20 @@ void updateGame() {
     frame++;
 
     // Modify at runtime
-    if (!paused || !lost || !won) {
+    if (!paused && !lost && !won) {
         if (frame % 10 == 0) {
             if (upward == 20) {
                 SCREENBLOCK[30].tilemap[OFFSET(13, 30, 32)] = SCREENBLOCK[30].tilemap[OFFSET(13, 21, 32)];
                 SCREENBLOCK[30].tilemap[OFFSET(14, 30, 32)] = SCREENBLOCK[30].tilemap[OFFSET(14, 21, 32)];
-                SCREENBLOCK[30].tilemap[OFFSET(13, 21, 32)] = SCREENBLOCK[29].tilemap[OFFSET(1, 28, 32)];
-                SCREENBLOCK[30].tilemap[OFFSET(14, 21, 32)] = SCREENBLOCK[29].tilemap[OFFSET(1, 28, 32)];
+                SCREENBLOCK[30].tilemap[OFFSET(13, 21, 32)] = SCREENBLOCK[30].tilemap[OFFSET(1, 2, 32)];
+                SCREENBLOCK[30].tilemap[OFFSET(14, 21, 32)] = SCREENBLOCK[30].tilemap[OFFSET(1, 2, 32)];
                 upward = 29;
             }
             else {
                 SCREENBLOCK[30].tilemap[OFFSET(13, upward, 32)] = SCREENBLOCK[30].tilemap[OFFSET(13, upward+1, 32)];
                 SCREENBLOCK[30].tilemap[OFFSET(14, upward, 32)] = SCREENBLOCK[30].tilemap[OFFSET(14, upward+1, 32)];
-                SCREENBLOCK[30].tilemap[OFFSET(13, upward+1, 32)] = SCREENBLOCK[29].tilemap[OFFSET(1, 28, 32)];
-                SCREENBLOCK[30].tilemap[OFFSET(14, upward+1, 32)] = SCREENBLOCK[29].tilemap[OFFSET(1, 28, 32)];
+                SCREENBLOCK[30].tilemap[OFFSET(13, upward+1, 32)] = SCREENBLOCK[30].tilemap[OFFSET(1, 2, 32)];
+                SCREENBLOCK[30].tilemap[OFFSET(14, upward+1, 32)] = SCREENBLOCK[30].tilemap[OFFSET(1, 2, 32)];
                 upward--;
             }
         }

@@ -258,6 +258,7 @@ void game() {
 // Sets up the pause state.
 void goToPause() {
     paused = 1;
+    upward = 29;
     hideSprites();
     waitForVBlank();
     DMANow(3, shadowOAM, OAM, 128 * 4);

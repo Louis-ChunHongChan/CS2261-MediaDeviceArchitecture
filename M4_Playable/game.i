@@ -971,6 +971,7 @@ extern int delivered;
 extern int score;
 extern int won, lost, paused;
 extern int time_m, time_s;
+extern int upward;
 
 
 void initArrow();
@@ -1077,20 +1078,13 @@ extern const unsigned short collisionmapBitmap[98304];
 
 extern const unsigned short collisionmapPal[256];
 # 8 "game.c" 2
-# 1 "groundCollisionMap.h" 1
-# 21 "groundCollisionMap.h"
-extern const unsigned short groundCollisionMapBitmap[32768];
-
-
-extern const unsigned short groundCollisionMapPal[256];
-# 9 "game.c" 2
 # 1 "sheidGuard.h" 1
 
 
 extern const unsigned int sheidGuard_sampleRate;
 extern const unsigned int sheidGuard_length;
 extern const signed char sheidGuard_data[];
-# 10 "game.c" 2
+# 9 "game.c" 2
 
 
 
@@ -1299,7 +1293,7 @@ void initGame() {
     guyvOff = 96+512;
     hOff = 0;
     guyhOff = 0;
-# 228 "game.c"
+# 227 "game.c"
     initGuy();
     initDoor();
     initKey();
@@ -1523,7 +1517,7 @@ void initCrazy() {
 
     }
 }
-# 465 "game.c"
+# 464 "game.c"
 void initHeart() {
     int shift = 0;
     for (int i = 0; i < 3; i++) {
@@ -1540,20 +1534,20 @@ void updateGame() {
     frame++;
 
 
-    if (!paused || !lost || !won) {
+    if (!paused && !lost && !won) {
         if (frame % 10 == 0) {
             if (upward == 20) {
                 ((screenblock *)0x6000000)[30].tilemap[((30) * (32) + (13))] = ((screenblock *)0x6000000)[30].tilemap[((21) * (32) + (13))];
                 ((screenblock *)0x6000000)[30].tilemap[((30) * (32) + (14))] = ((screenblock *)0x6000000)[30].tilemap[((21) * (32) + (14))];
-                ((screenblock *)0x6000000)[30].tilemap[((21) * (32) + (13))] = ((screenblock *)0x6000000)[29].tilemap[((28) * (32) + (1))];
-                ((screenblock *)0x6000000)[30].tilemap[((21) * (32) + (14))] = ((screenblock *)0x6000000)[29].tilemap[((28) * (32) + (1))];
+                ((screenblock *)0x6000000)[30].tilemap[((21) * (32) + (13))] = ((screenblock *)0x6000000)[30].tilemap[((2) * (32) + (1))];
+                ((screenblock *)0x6000000)[30].tilemap[((21) * (32) + (14))] = ((screenblock *)0x6000000)[30].tilemap[((2) * (32) + (1))];
                 upward = 29;
             }
             else {
                 ((screenblock *)0x6000000)[30].tilemap[((upward) * (32) + (13))] = ((screenblock *)0x6000000)[30].tilemap[((upward+1) * (32) + (13))];
                 ((screenblock *)0x6000000)[30].tilemap[((upward) * (32) + (14))] = ((screenblock *)0x6000000)[30].tilemap[((upward+1) * (32) + (14))];
-                ((screenblock *)0x6000000)[30].tilemap[((upward+1) * (32) + (13))] = ((screenblock *)0x6000000)[29].tilemap[((28) * (32) + (1))];
-                ((screenblock *)0x6000000)[30].tilemap[((upward+1) * (32) + (14))] = ((screenblock *)0x6000000)[29].tilemap[((28) * (32) + (1))];
+                ((screenblock *)0x6000000)[30].tilemap[((upward+1) * (32) + (13))] = ((screenblock *)0x6000000)[30].tilemap[((2) * (32) + (1))];
+                ((screenblock *)0x6000000)[30].tilemap[((upward+1) * (32) + (14))] = ((screenblock *)0x6000000)[30].tilemap[((2) * (32) + (1))];
                 upward--;
             }
         }
@@ -1577,7 +1571,7 @@ void updateGame() {
             gravity = 10;
         }
     }
-# 532 "game.c"
+# 531 "game.c"
     if (!climbing && !jumping && !floating) {
         int kept = 0;
         while (collisionCheck(collisionMap, 256, guy.col, guy.row, guy.width, guy.height, 0, kept) && kept < gravity) {
@@ -1883,7 +1877,7 @@ void updateCustomer() {
 }
 
 void updateCrazy() {
-# 848 "game.c"
+# 847 "game.c"
     for (int i = 0; i < 9; i++) {
         if (frame - crazyFrame >= 50) {
             if (!crazy[i].active) {
@@ -1937,7 +1931,7 @@ void updateCrazy() {
             }
             crazy[i].col += crazy[i].cdel;
         }
-# 920 "game.c"
+# 919 "game.c"
     }
 
 
@@ -1960,7 +1954,7 @@ void animateGuy() {
 
     guy.prevAniState = guy.aniState;
     guy.aniState = IDLE;
-# 953 "game.c"
+# 952 "game.c"
     if(guy.aniCounter % 8 == 0) {
         guy.curFrame = (guy.curFrame + 1) % guy.numFrames;
     }
@@ -2040,7 +2034,7 @@ void animateGuy() {
     }
 
 }
-# 1041 "game.c"
+# 1040 "game.c"
 void animateCustomer() {
 
     customer.aniCounter++;
@@ -2131,7 +2125,7 @@ void drawGuy() {
         shadowOAM[0].attr1 = ((guy.col - guyhOff) & 0x1FF) | (1 << 14);
         shadowOAM[0].attr2 = ((guy.curFrame * 2)*32 + (15)) | ((0) << 12);
     }
-# 1148 "game.c"
+# 1147 "game.c"
 }
 
 void drawDoor() {

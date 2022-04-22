@@ -58,6 +58,7 @@ extern int delivered;
 extern int score;
 extern int won, lost, paused;
 extern int time_m, time_s;
+extern int upward;
 
 // Prototypes
 void initArrow();

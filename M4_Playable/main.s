@@ -549,56 +549,59 @@ goToPause:
 	@ args = 0, pretend = 0, frame = 0
 	@ frame_needed = 0, uses_anonymous_args = 0
 	push	{r4, r5, r6, lr}
+	mov	r1, #29
 	mov	r5, #1
 	mov	r6, #67108864
-	ldr	r2, .L59
-	ldr	r3, .L59+4
-	str	r5, [r2]
-	mov	lr, pc
-	bx	r3
+	ldr	r0, .L59
+	ldr	r2, .L59+4
 	ldr	r3, .L59+8
+	str	r5, [r0]
+	str	r1, [r2]
 	mov	lr, pc
 	bx	r3
-	ldr	r4, .L59+12
+	ldr	r3, .L59+12
+	mov	lr, pc
+	bx	r3
+	ldr	r4, .L59+16
 	mov	r3, #512
 	mov	r2, #117440512
 	mov	r0, #3
-	ldr	r1, .L59+16
+	ldr	r1, .L59+20
 	mov	lr, pc
 	bx	r4
-	ldr	r2, .L59+20
+	ldr	r2, .L59+24
 	mov	r3, #256
 	strh	r2, [r6]	@ movhi
 	mov	r0, #3
 	mov	r2, #83886080
-	ldr	r1, .L59+24
+	ldr	r1, .L59+28
 	mov	lr, pc
 	bx	r4
 	mov	r2, #100663296
 	mov	r0, #3
-	ldr	r3, .L59+28
-	ldr	r1, .L59+32
+	ldr	r3, .L59+32
+	ldr	r1, .L59+36
 	mov	lr, pc
 	bx	r4
 	mov	r0, #3
 	mov	r3, #1024
-	ldr	r2, .L59+36
-	ldr	r1, .L59+40
+	ldr	r2, .L59+40
+	ldr	r1, .L59+44
 	mov	lr, pc
 	bx	r4
 	mov	r3, #4608
 	mov	r1, #3
-	ldr	r2, .L59+44
+	ldr	r2, .L59+48
 	strh	r3, [r6]	@ movhi
-	ldr	r3, .L59+48
+	ldr	r3, .L59+52
 	str	r1, [r2]
 	mov	lr, pc
 	bx	r3
-	ldr	r3, .L59+52
+	ldr	r3, .L59+56
 	mov	r2, r5
 	ldr	r1, [r3]
-	ldr	r0, .L59+56
-	ldr	r3, .L59+60
+	ldr	r0, .L59+60
+	ldr	r3, .L59+64
 	mov	lr, pc
 	bx	r3
 	pop	{r4, r5, r6, lr}
@@ -607,6 +610,7 @@ goToPause:
 	.align	2
 .L59:
 	.word	paused
+	.word	upward
 	.word	hideSprites
 	.word	waitForVBlank
 	.word	DMANow

@@ -1388,6 +1388,7 @@ extern int delivered;
 extern int score;
 extern int won, lost, paused;
 extern int time_m, time_s;
+extern int upward;
 
 
 void initArrow();
@@ -1521,7 +1522,6 @@ extern const unsigned short levelMap[3072];
 extern const unsigned short levelPal[256];
 # 19 "main.c" 2
 
-
 # 1 "sound.h" 1
 void setupSounds();
 void playSoundA(const signed char* sound, int length, int loops);
@@ -1548,35 +1548,35 @@ typedef struct{
 
 SOUND soundA;
 SOUND soundB;
-# 22 "main.c" 2
+# 21 "main.c" 2
 # 1 "menuSong.h" 1
 
 
 extern const unsigned int menuSong_sampleRate;
 extern const unsigned int menuSong_length;
 extern const signed char menuSong_data[];
-# 23 "main.c" 2
+# 22 "main.c" 2
 # 1 "gameSong.h" 1
 
 
 extern const unsigned int gameSong_sampleRate;
 extern const unsigned int gameSong_length;
 extern const signed char gameSong_data[];
-# 24 "main.c" 2
+# 23 "main.c" 2
 # 1 "winSong.h" 1
 
 
 extern const unsigned int winSong_sampleRate;
 extern const unsigned int winSong_length;
 extern const signed char winSong_data[];
-# 25 "main.c" 2
+# 24 "main.c" 2
 # 1 "loseSong.h" 1
 
 
 extern const unsigned int loseSong_sampleRate;
 extern const unsigned int loseSong_length;
 extern const signed char loseSong_data[];
-# 26 "main.c" 2
+# 25 "main.c" 2
 
 
 void initialize();
@@ -1769,7 +1769,7 @@ void goToGame() {
     lost = 0;
     hideSprites();
     waitForVBlank();
-# 228 "main.c"
+# 227 "main.c"
     (*(volatile unsigned short *)0x4000000) = 4 | (1 << 8) | (1 << 12);
     DMANow(3, levelPal, ((unsigned short *)0x5000000), 512 / 2);
     DMANow(3, levelTiles, &((charblock *)0x6000000)[1], 24128 / 2);
@@ -1804,6 +1804,7 @@ void game() {
 
 void goToPause() {
     paused = 1;
+    upward = 29;
     hideSprites();
     waitForVBlank();
     DMANow(3, shadowOAM, ((OBJ_ATTR *)(0x7000000)), 128 * 4);
